@@ -9,8 +9,9 @@
 6) autocorrect
 
 ## How to run the project?
-Once the mentioned libraries are installed you just run the main.py file. After running this file the server starts.
-Now just open your browser and type 127.0.0.1:500 in url field
-Now you will see a upload section where you need to upload a image, once you upload image the result will be displayed
+1) Once the mentioned libraries are installed you just run the main.py file. 
+2) After running this file the server starts.
+3) Now just open your browser and type 127.0.0.1:500 in url field
+4) Now you will see a upload section where you need to upload a image, once you upload image the result will be displayed
 on right side in result section.
 
