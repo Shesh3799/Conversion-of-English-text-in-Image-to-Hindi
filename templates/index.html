@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Home</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<!--===============================================================================================-->
+<style>
+body {
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("{{ url_for('static',filename='images/bg1.jpg')}}");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.gg{
+	background-image: linear-gradient(rgba(0,0,0,0.20),rgba(0,0,0,0.20))
+}
+.ad{
+  animation:blinkingText 5s infinite;
+}
+@keyframes blinkingText{
+  0%{   color: orange;  }
+  14%{  color: yellow; }
+  28%{  color: white; }
+  
+  56% {  color:yellow;  }
+  84%{  color:orange;  }
+  100%{ color: white;  }
+}
+</style>
+</head>
+<body>
+<div>
+	<h1 class="text-center ad" style="font-size: 50px;">Conversion of English text in Image to Hindi</h1>
+</div>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+  {% endif %}
+{% endwith %}
+<br>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-5">
+			<h1 class="ml-5" style="color: white;">Upload Section</h1>
+			<div class="text-center pt-2 gg" style="border:2px solid white; height: 390px;width: 390px;">
+			<img id="blah" src="#" alt="your image"><br>
+			</div>
+		<br>
+		<form method="post" action="/detect" enctype="multipart/form-data">
+			<input type='file' name="file" onchange="readURL(this);" / style="font-size: 15px;" required="" accept="image/*"><br><br><br>
+
+			<button class="text-center bg-warning" type="submit" name="submit" style="font-size: 20px;margin-left: 130px;">Submit </button>
+		</form>
+			
+		</div>
+		<div class="col-md-5">
+			<h1 class="text-center" style="color: white;">Result Section</h1>
+			<h5 style="color: white;">1.Extracted Text</h5>
+			<div class=" pt-2 gg" style="border:2px solid white; height: 150px;width: 750px; overflow: auto;">
+				{% if result1%}
+				<p style="color: white;">{{result1}}</p>
+				{% endif %}
+			</div>
+			<h5 style="color: white;">2. Convertd Text</h5>
+			<div class=" pt-2 gg" style="border:2px solid white; height: 150px;width: 750px; overflow: auto;">
+				{% if result3%}
+				<p style="color: white;">{{result3}}</p>
+				{% endif %}
+			</div>
+		</div>	
+		<div class="col-md-1"></div>
+		</div>
+</div>	
+<!--===============================================================================================-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(320)
+                        .height(320);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
+</body>
+</html>
