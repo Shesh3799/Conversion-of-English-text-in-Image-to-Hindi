@@ -2,7 +2,7 @@
 
 ## To run this project you need the following libraries of python
 1) Flask
-2) pytesseract (You can follow official documentation or refer some youtube video for installing this)
+2) pytesseract
 3) PIL
 4) googletrans
 5) nltk
